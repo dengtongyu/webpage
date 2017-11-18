@@ -1,6 +1,0 @@
-<div class="result-box {{picType}}">
-	<div class="result-main">
-		<h1><img src="{{title}}"></h1>
-		<p>测试结果：{{conclusion}}</p>
-	</div>
-</div>
