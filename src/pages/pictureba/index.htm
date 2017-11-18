@@ -1,0 +1,123 @@
+
+{% extends 'base.tpl' %}
+
+{% block title %}美女图片-{% endblock %}
+
+{% block head %}
+<link href="./index.css?v={[now()]}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+	<div class="index-main" id="main">
+
+		{#<div class="item-block">
+			<div class="big-item">
+				<div class="img-box">
+					<img src="http://wx2.sinaimg.cn/mw600/006oxNJJly1fhnavnvq1pj30d20zjq7f.jpg">
+				</div>
+			</div>
+			<div class="small-item">
+				<div class="lit-item">
+					<div class="img-box">
+						<img src="http://wx4.sinaimg.cn/mw600/70f421e3gy1fhn7pwznvyj20jg0t5q4f.jpg">
+					</div>
+				</div>
+				<div class="lit-item mt">
+					<div class="img-box">
+						<img src="http://wx4.sinaimg.cn/mw600/005vbOHfgy1fhnait6kqsj30ia0wijts.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="item-block">
+			<div class="small-item">
+				<div class="lit-item">
+					<div class="img-box">
+						<img src="http://wx4.sinaimg.cn/mw600/70f421e3gy1fhn7pwznvyj20jg0t5q4f.jpg">
+					</div>
+				</div>
+				<div class="lit-item mt">
+					<div class="img-box">
+						<img src="http://wx4.sinaimg.cn/mw600/005vbOHfgy1fhnait6kqsj30ia0wijts.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="big-item">
+				<div class="img-box">
+					<img src="http://wx2.sinaimg.cn/mw600/006oxNJJly1fhnavnvq1pj30d20zjq7f.jpg">
+				</div>
+			</div>
+		</div>#}
+
+	</div>
+
+	<div class="more-block">
+		<a class="more-btn" id="more-btn" href="javascript:;">加载更多</a>
+	</div>
+
+<div class="pop-mark" id="pop-mark" style="display: none"></div>
+
+
+{% endblock %} 
+  
+{% block footer %}
+<script id="list-tpl" type="text/html">
+	{{each data as val key}}
+		{{if val.length == 3}}
+		{{if key%2 == 0}}
+		<div class="item-block">
+			<div class="big-item">
+				<div class="img-box">
+					<img src="{{val[0].srcUrl}}" {{if val[0].srcGifUrl}}org="{{val[0].srcGifUrl}}"{{/if}}>
+				</div>
+			</div>
+			<div class="small-item">
+				<div class="lit-item">
+					<div class="img-box">
+						<img src="{{val[1].srcUrl}}" {{if val[1].srcGifUrl}}org="{{val[1].srcGifUrl}}"{{/if}}>
+					</div>
+				</div>
+				<div class="lit-item mt">
+					<div class="img-box">
+						<img src="{{val[2].srcUrl}}" {{if val[2].srcGifUrl}}org="{{val[2].srcGifUrl}}"{{/if}}>
+					</div>
+				</div>
+			</div>
+		</div> 
+		{{else}}
+		<div class="item-block">
+			<div class="small-item">
+				<div class="lit-item">
+					<div class="img-box">
+						<img src="{{val[0].srcUrl}}" {{if val[0].srcGifUrl}}org="{{val[0].srcGifUrl}}"{{/if}}>
+					</div>
+				</div>
+				<div class="lit-item mt">
+					<div class="img-box">
+						<img src="{{val[1].srcUrl}}" {{if val[1].srcGifUrl}}org="{{val[1].srcGifUrl}}"{{/if}}>
+					</div>
+				</div>
+			</div>
+			<div class="big-item">
+				<div class="img-box">
+					<img src="{{val[2].srcUrl}}" {{if val[2].srcGifUrl}}org="{{val[2].srcGifUrl}}"{{/if}}>
+				</div>
+			</div>
+		</div>
+		{{/if}}
+		{{/if}}
+	{{/each}}
+</script>
+
+<script id="pop-tpl" type="text/html">
+	<div class="img-pop">
+		<div class="img-main">
+			<img src="{{imgUrl}}">
+		</div>
+	</div>
+</script>
+
+<script src="./index.js?v={[now()]}"></script>
+{% endblock %}

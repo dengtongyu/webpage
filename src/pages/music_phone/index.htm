@@ -1,0 +1,95 @@
+
+{% extends 'base.tpl' %}
+
+{% block title %}音乐盒{% endblock %}
+
+{% block head %}
+<link href="./index.css?v={[now()]}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+	<div id="index-main" class="index-main">
+		
+		<div class="middle-box">
+			<audio id="music" v-bind:src="musicUrl" ref="music" style="display:none">你的浏览器不支持audio标签。</audio>
+			<div class="music-main">
+				<div class="bg-block" v-bind:style="backgroundImage"></div>
+				<div class="needle-plus"></div>
+				<div class="disc">
+					<div class="singer-img rotate" v-bind:class="[musicStatus?'rot-play':'rot-paused']"><img v-bind:src="singerImg"></div>
+					<div class="disc-mask"></div>
+				</div>
+				<div class="song-lyrics">
+					<div id="lyrics-scroll" class="lyrics-scroll" ref="lyricsScroll">
+						<p v-for="row in lyrics">{{row[1]}}</p>
+					</div>
+				</div>
+				<div class="search-btn">
+					<button v-on:touchend="showSeachPop">搜索</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="bottom-bar">
+			<div class="bom-bar-bg">
+				<div class="music-msg">
+					<div class="left-box">
+						<a class="title-page" href="javascript:;">
+							<img v-bind:src="singerImg">
+						</a>
+					</div>
+					<div class="right-box">
+						<div class="progress-bar" id="progress-bar" v-on:touchstart="clickDown" v-on:touchmove="clickMove" v-on:touchend="clickUp" ref="progressBarDom">
+							<div class="load-prog" style="width:{{loadProg}}%"></div>
+							<div class="prog play-prog" id="play-prog" v-bind:style="'width:'+playProg+'%'" ref="playProg">
+								<span class="pos"></span>
+							</div>
+						</div>
+						<div class="text-msg">
+							<div class="music-name ell">{{songName}}-{{singer}}</div>
+							<div class="music-time">
+								<span class="ct">{{currentTime}}</span>/<span>{{allTime}}</span>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="controller">
+					<a class="prev cutover icon" href="javascript:;" v-on:touchend="prev"></a>
+					<a class="play ctrl-btn icon" href="javascript:;" v-bind:class="[musicStatus?'pause':'play']" v-on:touchend="play"></a>
+					<a class="next cutover icon" href="javascript:;" v-on:touchend="next"></a>
+				</div>
+			</div>
+
+		</div>
+		
+		<div class="search-pop" v-if="showPop">
+			<div class="pop-bg"></div>
+			<div class="pop-main">
+				<div class="search-bar">
+					<input class="search-input" type="text" v-model="searchContent">
+					<button class="search-button" v-on:touchend="searchRequest">搜索</button>
+				</div>
+				<div class="search-list">
+					<div class="search-list-scroll">
+						<div class="search-list-item" v-for="item in searchResult">
+							<p class="ell">{{item.FileName | htmlEncode}}</p>
+							<button v-bind:hash="item.FileHash" v-on:touchend="playSong">播放</button>
+						</div>
+					</div>
+				</div>
+				<div class="placeholder">
+					<button v-on:touchend="closePop">关 闭</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+{% endblock %} 
+  
+{% block footer %}
+<script src="./index.js?v={[now()]}"></script>
+{% endblock %}

@@ -1,0 +1,154 @@
+
+/**
+ * 
+ * @authors Tony.Deng (dengtongyu123@163.com)
+ * @date    2017-05-06 21:15:04
+ * @version $Id$
+ */
+
+@import "../../style/common/pc/_common.styl";
+
+$bg = 'https://t1.picb.cc/uploads/2017/11/16/NWbvj.jpg';
+
+$gou = 'https://t1.picb.cc/uploads/2017/11/15/NuFOv.png';
+
+$btn = 'https://t1.picb.cc/uploads/2017/11/15/NuPRi.png';
+
+$hev = 'https://t1.picb.cc/uploads/2017/11/15/Nu03a.png';
+
+$xle = 'https://t1.picb.cc/uploads/2017/11/15/Nupud.png';
+
+$xse = 'https://t1.picb.cc/uploads/2017/11/15/Nubd1.png';
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #030520
+}
+
+.content-box {
+    width: 600px;
+    height: 400px;
+    background-image: url($bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.index-main {
+    width: 600px;
+    height: 400px;
+}
+
+.img-list {
+    padding-top: 160px;
+    width: 552px;
+    height: 144px;
+    margin: 0 auto;
+    &>.item {
+        width: 176px;
+        height: 144px;
+        float: left;
+        margin-right: 12px;
+        position: relative;
+        cursor: pointer;
+        &>img {
+            border: transparent solid 3px;
+            &:hover {
+                border: #244dca solid 3px;
+            }
+        }
+        &>span {
+            display: none;
+            width: 19px;
+            height: 19px;
+            background-image: url($gou);
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 3px;
+            bottom: 3px;
+        }
+    }
+    &>.cur {
+        &>img {
+            border: #244dca solid 3px;
+        }
+        &>span {
+            display: block;
+        }
+    }
+}
+
+.btn-box {
+    padding-top: 16px;
+    width: 263px;
+    height: 48px;
+    margin: 0 auto;
+    &>a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        background-image: url($btn);
+        background-position: center;
+        background-repeat: no-repeat;
+        border: none;
+    }
+}
+
+.result-box {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    //padding-top: 153px;
+}
+
+.result-main {
+    //width: 546px;
+    //height: 226px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &>h1 {
+        position: absolute;
+        left: 26px;
+        top:153px;
+    }
+    &>p {
+        width: 490px;
+        height: 40px;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 60px;
+        top: 203px;
+        color: #e0e1e3;
+        font-size: 14px;
+        font-family: 'Microsoft YaHei';
+        line-height: 20px;
+    }
+}
+
+.hev {
+   background-image: url($hev); 
+}
+
+.xle {
+   background-image: url($xle); 
+}
+
+.xse {
+   background-image: url($xse); 
+}
+
+
+
+
+

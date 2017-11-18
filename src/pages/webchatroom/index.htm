@@ -1,0 +1,58 @@
+
+{% extends 'base.tpl' %}
+
+{% block title %}老司机聊天室-{% endblock %}
+
+{% block head %}
+<link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet">
+<link href="./index.css?v={[now()]}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+	<div class="index-main">
+		<div id="top-bar" class="weui-cell top-bar">
+			<p>当前在线人数：<span id="online-users">0</span></p>
+		</div>
+    	<div id="msg-content" class="msg-content">
+    		{# <div class="weui-cell">
+    			<div class="weui-cell__hd head-img hl">
+    				<img src="https://sfault-avatar.b0.upaiyun.com/175/934/175934663-572d654c6f521_big64">
+    			</div>
+    			<div class="weui-cell__hd bubble others">是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页开发量身设计，可以令用户的使用感知更加统一。在微信网页开发中使用1314</div>
+    		</div>
+    		<div class="weui-cell">
+    			<div class="weui-cell__hd head-img hl">
+    				<img src="https://sfault-avatar.b0.upaiyun.com/175/934/175934663-572d654c6f521_big64">
+    			</div>
+    			<div class="weui-cell__hd bubble others">我去年买了个表</div>
+    		</div>
+    		<div class="weui-cell">
+    			<div class="weui-cell__bd"></div>
+    			<div class="bubble self weui-cell__ft">我有一头小毛驴，可我从来也不骑</div>
+    			<div class="weui-cell__ft head-img hr">
+    				<img src="https://sfault-avatar.b0.upaiyun.com/175/934/175934663-572d654c6f521_big64">
+    			</div>
+    		</div>
+    		<div class="weui-cell">
+    			<div class="weui-cell__bd"></div>
+    			<div class="bubble self weui-cell__ft">WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页开发量身设计，可以令用户的使用感知更加统一。在微信网页开发中使用 WeUI，有如下优势：</div>
+    			<div class="weui-cell__ft head-img hr">
+    				<img src="https://sfault-avatar.b0.upaiyun.com/175/934/175934663-572d654c6f521_big64">
+    			</div>
+    		</div> #}
+    	</div>
+    	<div class="input-bar">
+	    	<div class="weui-cell weui-cells_form">
+	    		<div class="input-box weui-cell__bd"><input id="msg-val" class="weui-input" type="text" placeholder="请输入文本"></div>
+	    		<div id="send-btn" class="send-box weui-cell__ft"><a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">发送</a></div>
+	    	</div>
+    	</div>
+    </div>
+
+{% endblock %} 
+  
+{% block footer %}
+<script src="http://node.dengtongyu.com/node_modules/socket.io-client/dist/socket.io.js"></script>
+<script src="./index.js?v={[now()]}"></script>
+{% endblock %}

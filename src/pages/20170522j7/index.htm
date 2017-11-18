@@ -1,0 +1,46 @@
+
+{% extends 'base.tpl' %}
+
+{% block title %}node-{% endblock %}
+
+{% block head %}
+<link href="./index.css?v={[now()]}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+	<div class="index-main">
+		    <video id="video" width="200" height="150" autoplay=""></video>
+	</div>
+
+{% endblock %} 
+  
+{% block footer %}
+<script type="text/javascript">
+	var vedio = document.querySelector('#video');
+
+	//constraints 参数是一个包含了video 和 audio两个成员的MediaStreamConstraints
+	//对象，用于说明请求的媒体类型。必须至少一个类型或者两个同时可以被指定。
+	var constraints = {
+		audio: false,
+		video: {
+			frameRate: { ideal: 10,max: 15,min: 8 }
+		}
+	}
+
+	//获取设备（摄像头或者麦克风）
+	navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+	.then(function(mediaStream){
+		console.log(mediaStream);
+		video.src = window.URL.createObjectURL(mediaStream);
+		video.onloadedmetadata = function(e) {
+		    video.play();
+		    console.log(e);
+		};
+	})
+	.catch(function(error){
+		console.log(error);
+	});
+</script>
+<script src="./index.js?v={[now()]}"></script>
+{% endblock %}

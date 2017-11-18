@@ -1,0 +1,135 @@
+/**
+ * 
+ * @authors Tony.Deng (dengtongyu123@163.com)
+ * @date    2017-05-09 18:52:31
+ * @version $Id$
+ */
+
+/*全局样式*/
+*{margin:0; padding:0;}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,var,i{font-style:normal; font-weight:normal;}
+ul,ol,li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+html {font-size: 62.5%}
+input,textarea {outline:none;resize:none;}
+pre,p{ white-space: -webkit-pre-wrap;white-space: -moz-pre-wrap; white-space: pre-wrap; word-wrap: break-word;}
+a {-webkit-tap-highlight-color: rgba(255, 255, 255, 0);-webkit-focus-ring-color: rgba(0, 0, 0, 0);outline: none;border: none;text-decoration:none;}
+a:hover{ }
+body {font-size:1.2rem;font-family:"Microsoft Yahei";color:#666;background-color: #fff}
+
+
+div {
+    /*width: 1rem; 
+    height: 0.4rem;*/
+    font-size: 12px; // 默认写上dpr为1的fontSize
+}
+
+[data-dpr="2"] div {
+    font-size: 24px;
+}
+
+[data-dpr="3"] div {
+    font-size: 36px;
+}
+
+$norm=750;
+transformRem(v)
+  (v/$norm*10)rem
+
+/*清除浮动*/
+.cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; } 
+.cl { zoom: 1; }
+.clear {clear:both;display:inline;}
+
+/*显示隐藏*/
+.show{display:block;} 
+.hide{display:none;}
+
+/*左右浮动*/
+.fl,.z{float:left;}
+.fr,.y{float:right;}
+
+/*字体抗锯齿*/
+.thin {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+
+/*单行文字超出显示省略号*/
+.ell {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+/*遮罩*/
+.pop-mark {
+	width:100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	opacity: .4;
+	background-color: #000;
+}
+
+/*loading*/
+.load-icon-box {
+	width: 110px;
+	height: 30px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -55px;
+	margin-top: -15px;
+	z-index: 101;
+}
+
+.load-icon .loader:before,
+.load-icon .loader:after,
+.load-icon .loader {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load-icon 1.8s infinite ease-in-out;
+  animation: load-icon 1.8s infinite ease-in-out;
+}
+.load-icon .loader {
+  position: relative;
+  margin-top: -30px;
+  text-indent: -9999em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.load-icon .loader:before {
+  left: 40px;
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.load-icon .loader:after {
+  left: 80px;
+}
+.load-icon .loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+@-webkit-keyframes load-icon {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #ffffff;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #FFF;
+  }
+}
+@keyframes load-icon {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #ffffff;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #FFF;
+  }
+}

@@ -1,0 +1,35 @@
+
+{% extends 'base.tpl' %}
+
+{% block title %}丰田-凯美瑞-{% endblock %}
+
+{% block head %}
+<link href="./index.css?v={[now()]}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<div id="index-main"  class="index-main">
+	<div class="img-list">
+		<div class="item cur">
+			<img alt="丰田-凯美瑞-双擎" src="./images/toyotacamry_hev.png">
+			<span></span>
+		</div>
+		<div class="item">
+			<img alt="丰田-凯美瑞" src="./images/toyotacamry_xle.png">
+			<span></span>
+		</div>
+		<div class="item" style="margin-right:0">
+			<img alt="丰田-凯美瑞-运动" src="./images/toyotacamry_xse.png">
+			<span></span>
+		</div>
+	</div>
+	<div class="btn-box">
+		<a id="btn" href="javascript:;"></a>
+	</div>
+</div>
+
+{% endblock %} 
+  
+{% block footer %}
+<script src="./index.js?v={[now()]}"></script>
+{% endblock %}
