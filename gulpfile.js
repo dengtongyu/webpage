@@ -74,7 +74,7 @@ function setPath(pathName) {
 	pathConfig.currPath = pathName;
 
 	//stylus build目录
-	pathConfig.styleBuildPath = config.base + '/pages/' + pathName + '/**/*.styl';
+	pathConfig.styleBuildPath = config.base + '/pages/' + pathName + '/**/!(_)*.styl';
 
 	//swig build目录
 	pathConfig.htmlBuildPath = config.base + '/pages/' + pathName + '/**/*.htm';

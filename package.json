@@ -13,6 +13,8 @@
     "browser-sync": "^2.18.11",
     "gulp": "^3.9.1",
     "gulp-htmlmin": "^3.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-stylus": "^2.6.0",
     "gulp-swig": "^0.8.0",
     "gulp-tmod": "^2.0.3",

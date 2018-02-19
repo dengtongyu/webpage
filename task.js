@@ -17,6 +17,8 @@ const reload = browserSync.reload;
 const proxyMiddleware = require('http-proxy-middleware');
 const lodash = require('lodash');
 const path = require('path');
+const plumber = require('gulp-plumber');
+const notify = require('gulp-notify');
 
 let swigOpts = {
     defaults: {
@@ -24,6 +26,16 @@ let swigOpts = {
         cache: false
     }
 };
+
+function onErrorHandler(err) {
+	notify.onError({
+		title: "Webpage",
+        subtitle: err.plugin + " error!",
+        message: "Error: <%= error.message %>",
+        sound: "Beep"
+	})(err);
+	this.emit('end');
+}
 
 //代理配置
 let proxy = proxyMiddleware(
@@ -136,16 +148,18 @@ module.exports =  function (pathConfig,config) {
 	//stylus任务
 	gulp.task('stylus_build', function () {
 	    return gulp.src(pathConfig.styleBuildPath, config)
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(stylus({
 		    	compress: true
 		    }))
-	        .pipe(gulp.dest(config.build))
+			.pipe(gulp.dest(config.build))
 	        .on("end", reload);
 	});
 
 	//swig任务
 	gulp.task('swig_build', function () {
-	    return gulp.src(pathConfig.htmlBuildPath, config)
+		return gulp.src(pathConfig.htmlBuildPath, config)
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(swig(swigOpts))
 	        .pipe(gulp.dest(config.build))
 	        .on("end", reload);
@@ -153,15 +167,17 @@ module.exports =  function (pathConfig,config) {
 
 	//htmlmin任务
 	gulp.task('htmlmin_build', function () {
-	    return gulp.src(pathConfig.htmlminBuildPath, config)
+		return gulp.src(pathConfig.htmlminBuildPath, config)
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(htmlmin({collapseWhitespace: true}))
-	        .pipe(gulp.dest(config.build))
+			.pipe(gulp.dest(config.build))
 	        .on("end", reload);
 	});
 
 	//webpack任务
 	gulp.task('webpack_build', function () {
-	    return gulp.src(pathConfig.scriptBuildPath)
+		return gulp.src(pathConfig.scriptBuildPath)
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(webpack( webPackConfig ))
   			.pipe(gulp.dest(pathConfig.webpackOutPath))
 	        .on("end", reload);
@@ -169,7 +185,8 @@ module.exports =  function (pathConfig,config) {
 
 	//uglify任务
 	gulp.task('uglify_build', function () {
-	    return gulp.src(pathConfig.uglifyBuildPath, {base: config.build})
+		return gulp.src(pathConfig.uglifyBuildPath, {base: config.build})
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(uglify())
 	        .pipe(gulp.dest(config.build))
 	        .on("end", reload);
@@ -178,7 +195,8 @@ module.exports =  function (pathConfig,config) {
 	//tmod任务
 	gulp.task('tmod_build', function () {
 		console.log(pathConfig.tmodBuildPath);
-	    return gulp.src(pathConfig.tmodBuildPath)
+		return gulp.src(pathConfig.tmodBuildPath)
+			.pipe(plumber({errorHandler: onErrorHandler}))
 	        .pipe(tmodjs({
 				templateBase: pathConfig.tmodBasePath,
 				output: pathConfig.tmodOutPath,
